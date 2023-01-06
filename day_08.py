@@ -15,7 +15,6 @@ class Forest:
 
         for v_index, h_tree_line in enumerate(self.trees[1:-1], 1):
             for h_index, tree in enumerate(h_tree_line[1:-1], 1):
-                # print(h_tree_line[:index], tree, h_tree_line[index + 1:])
                 if tree > max(h_tree_line[:h_index]):
                     continue
                 if tree > max(h_tree_line[h_index + 1:]):
@@ -48,6 +47,7 @@ class Forest:
             for h_index, tree in enumerate(h_tree_line[1:-1], 1):
                 v_tree_line = [x[h_index] for x in self.trees]
 
+                # Calculate left, right, up, down
                 scenic_score = self._calculate_score(tree, reversed(h_tree_line[:h_index]))
                 scenic_score *= self._calculate_score(tree, h_tree_line[h_index + 1:])
                 scenic_score *= self._calculate_score(tree, reversed(v_tree_line[:v_index]))
